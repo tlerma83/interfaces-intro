@@ -33,18 +33,19 @@ public class FlyingSquirrel : IWalking, IFlying
 
     public void Fly()
     {
-        Console.WriteLine("It opens it arms and glies through the air on skin flaps");
+        Console.WriteLine("The squirrel opens it arms and glies through the air on skin flaps");
     }
 
     public void Walk()
     {
-        throw new NotImplementedException();
+        // throw new NotImplementedException();
+        Console.WriteLine("test walking eagle");
     }
 }
 
 public class Eagle : IFlying, IWalking
 {
-  public double AirSpeed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+  public double AirSpeed { get; set; }
   public string Mechanism { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
   public double GroundSpeed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
   public int Legs { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -56,7 +57,8 @@ public class Eagle : IFlying, IWalking
 
   public void Walk()
   {
-    throw new NotImplementedException();
+    // throw new NotImplementedException();
+    Console.WriteLine("test walking eagle");
   }
 }
 
@@ -67,14 +69,25 @@ public class Program
         FlyingSquirrel rocky = new FlyingSquirrel();
         Eagle sam = new Eagle();
 
-        List<IFlying> birds = new List<IFlying>();
+        List<IWalking> birds = new List<IWalking>();
+        //type squirrel , class squirrel
         birds.Add(sam);
+        //type eagle, class eagle
         birds.Add(rocky);
 
+        // the foreach will loop through rocky-type FlyingSquirrel , sam-type Eagle
         foreach (var thing in birds)
         {
-            thing.Fly();
+            //each thing has a type or class, will refer to the method fly in that specific class
+            // fly method consoles a message
+            // thing.Fly();
+            thing.Walk();
+
         }
+        sam.Fly();
+        sam.Walk();
+        sam.AirSpeed = 5;
+        Console.WriteLine($"sam's airspeed {sam.AirSpeed}");
         
     }
 
